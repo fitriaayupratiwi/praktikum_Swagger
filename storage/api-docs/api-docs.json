@@ -1,0 +1,166 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Dokumentasi Produk",
+        "description": "Dokumentasi API untuk pengelolaan produk.",
+        "contact": {
+            "email": "fitriaayupratiwi@example.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "/api"
+        }
+    ],
+    "paths": {
+        "/products": {
+            "get": {
+                "summary": "Daftar produk",
+                "description": "Mengambil semua data produk.",
+                "operationId": "e8dee54b09adbe3622e56a4f4f19ecb0",
+                "responses": {
+                    "200": {
+                        "description": "Daftar produk berhasil diambil"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Tambah produk",
+                "description": "Menyimpan produk baru ke database.",
+                "operationId": "5d7ee765feb2052f10363a3d121ebd5e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Produk Baru"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Deskripsi produk"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 10000
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Produk berhasil disimpan"
+                    }
+                }
+            }
+        },
+        "/products/{name}": {
+            "get": {
+                "summary": "Detail produk",
+                "description": "Mengambil detail produk berdasarkan Name",
+                "operationId": "72a1f10f9a55335dcfadce2613fb5121",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Name produk",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detail produk berhasil diambil"
+                    },
+                    "404": {
+                        "description": "Produk tidak ditemukan"
+                    }
+                }
+            }
+        },
+        "/products/{id}": {
+            "put": {
+                "summary": "Update produk",
+                "description": "Mengupdate data produk berdasarkan ID.",
+                "operationId": "1b73c420e0cf9fb1cb88dcf445b9428b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID produk",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Produk Baru"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Deskripsi produk"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 12000
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Produk berhasil diupdate"
+                    },
+                    "404": {
+                        "description": "Produk tidak ditemukan"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Hapus produk",
+                "description": "Menghapus produk berdasarkan ID.",
+                "operationId": "4618152b49c17cc0c19dfed9ba73aa46",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID produk",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Produk berhasil dihapus"
+                    },
+                    "404": {
+                        "description": "Produk tidak ditemukan"
+                    }
+                }
+            }
+        }
+    }
+}
